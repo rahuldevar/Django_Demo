@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Page Title</title>
+    <style>
+        header {
+            background-color: #330;
+            color: #fff;
+            padding: 13px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        footer {
+            background-color: #330;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .logo {
+            max-width: 200px;
+            height: auto;
+            display: block;
+            margin-right: auto;
+        }
+
+        .menu {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: flex-start; /* Align menu to the left */
+            flex-grow: 1; /* Make the logo occupy remaining space on the left */
+        }
+
+        .menu li {
+            margin-left: 20px;
+        }
+
+        .menu li:first-child {
+            margin-left: 0;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .menu a:hover {
+            background-color: #555;
+        }
+
+        .slideshow-container {
+            max-width: 100%;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            height: 100vh;
+        }
+
+        .slideshow-container img {
+            width: 100%;
+            height: 100%;
+            display: none;
+        }
+
+        .caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .header-h1 {
+            flex-grow: 1;
+            text-align: center;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <img src="{% static '7.JPG' %}" alt="Your Logo" class="logo">
+        <h1 class="header-h1">LIBRARY MANAGEMENT SYSTEM</h1>
+        <nav>
+            <ul class="menu">
+                <li><a href="{% url 'Loginpage' %}" class="top-right-button">Login</a></li>
+                <li><a href="{% url 'Signup' %}" class="top-right-button">Signup</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="slideshow-container">
+            <img src="{% static '5.JPG' %}" alt="Image 1">
+            <img src="{% static '6.JPG' %}" alt="Image 2">
+            <img src="{% static '13.JPG' %}" alt="Image 3">
+            <img src="{% static '15.JPG' %}" alt="Image 4">
+        </div>
+    </main>
+
+    <footer>
+        <marquee behavior="scroll" direction="left">LIBRARY MANAGEMENT SYSTEM</marquee>
+    </footer>
+
+    <script>
+        // JavaScript code for the image slideshow
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slideshow-container img');
+        const caption = document.querySelector('.caption');
+
+        function showSlide(index) {
+            slides[currentSlide].style.display = 'none';
+            currentSlide = (index + slides.length) % slides.length;
+            slides[currentSlide].style.display = 'block';
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        setInterval(nextSlide, 2000); // Change slide every 3 seconds
+    </script>
+</body>
+</html>

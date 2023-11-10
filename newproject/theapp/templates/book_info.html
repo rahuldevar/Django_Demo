@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add New Book</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .back-to-search-btn {
+            display: inline-block;
+            background-color: #337ab7;
+            color: white;
+            padding: 8px 16px;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+        .back-to-search-btn:hover {
+            background-color: #23527c;
+        }
+        h2 {
+            margin-top: 0;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="checkbox"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            transition: border-color 0.2s ease-in-out;
+        }
+        input[type="text"]:focus,
+        input[type="checkbox"]:focus {
+            border-color: #4CAF50;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            float: right;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="{% url 'booksearch' %}" class="back-to-search-btn">Back to Search</a>
+    <h2>Add New Book</h2>
+    <form method="post">
+        {% csrf_token %}
+
+        <div class="form-group">
+            <label for="bookname">Book Name:</label>
+            <input type="text" id="bookname" name="bookname" required>
+        </div>
+         <div class="form-group">
+            <label for="bookno">Book Number:</label>
+            <input type="text" id="bookno" name="bookno" required>
+        </div>
+        <div class="form-group">
+            <label for="authorname">Address</label>
+            <input type="text" id="authorname" name="authorname" required>
+        </div>
+        <div class="form-group">
+            <label for="status">Book status:</label>
+            <label><input type="radio" id="status" name="status" value="yes"> Yes</label>
+            <label><input type="radio" name="status" value="no"> No</label>
+        </div>
+
+        <div class="form-group">
+            <label for="edition">Book Edition:</label>
+            <input type="text" id="edition" name="edition" required>
+        </div>
+
+        <input type="submit" value="Save">
+    </form>
+</div>
+</body>
+</html>

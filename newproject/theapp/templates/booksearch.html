@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OPAC Library</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    header {
+    background-color: #000000; /* Change to the desired color value, e.g., red */
+    color: #fff;
+    text-align: center;
+    padding: 15px;
+  }
+    header h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
+      color: #fff; /* Change the color of the heading */
+    }
+
+    header .nav {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 10px;
+    }
+
+    header .nav a {
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 15px;
+      margin: 0 5px;
+      border-radius: 5px;
+      background-color: #0056b3; /* Change the background color of the navigation links */
+    }
+
+    header .nav a:hover {
+      background-color: #004080; /* Change the background color of the navigation links on hover */
+    }
+
+    main {
+      padding: 20px;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 24px;
+      margin-bottom: 30px;
+    }
+
+    .form-container {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .form-container label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    .form-container input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .button-container {
+      text-align: center;
+    }
+
+    .btn {
+      margin: 5px;
+    }
+
+    .table-responsive {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .table th,
+  .table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+  }
+
+  .table th {
+    background-color: #f2f2f2;
+  }
+
+  .table tr:hover {
+    background-color: #f5f5f5;
+  }
+
+    footer {
+      text-align: center;
+      padding: 10px;
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+<body>
+<header>
+    <h1>SEARCH</h1>
+    <nav class="nav">
+ <a href="{% url 'book_info' %}" class="btn btn-primary">add</a>
+ <a href="{% url 'book_list' %}" class="btn btn-primary">view</a>
+
+    </nav>
+  </header>
+  <main>
+    <h2><marquee>Welcome to the Online Public Access Catalog Library!</marquee></h2>
+<form method="post" class="form-container">
+      {% csrf_token %}
+    <label for="booknumber">Name</label>
+      <input type="text" placeholder="Enter Book number" id="booknumber" name="booknumber" >
+
+      <label for="booktitle">City</label>
+      <input type="text" placeholder="Enter book title" id="booktitle" name="booktitle" >
+    <div class="button-container">
+
+        <button type="submit" class="btn btn-primary">Search</button>
+
+      </div>
+    </form>
+
+    <div class="table-responsive">
+      {% if search_book %}
+        <table class="table table-striped">
+          <thead>
+            <tr>
+
+              <th>ISBN</th>
+              <th>Book Name</th>
+              <th>Author Name</th>
+               <th>Edition</th>
+                <th>Book Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for record in search_book %}
+              <tr>
+
+                <td>{{ record.bookno }}</td>
+                <td>{{ record.bookname }}</td>
+                <td>{{ record.authorname }}
+                  <td>{{ record.edition }}</td>
+                  <td>{{ record.status }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+          {% else %}
+<div id="message-box">
+
+
+</div>
+
+    </div>
+{% endif %}
+      <script>
+    function displayMessage(message) {
+        var messageBox = document.getElementById('message-box');
+        messageBox.innerHTML = '<h3 style="color:red;text-align:center;">' + message + '</h3>';
+        setTimeout(function() {
+            messageBox.innerHTML = '';  // Clear the message after 3 seconds
+        }, 3000);  // 3000 milliseconds = 3 seconds
+    }
+
+    {% if message %}
+        displayMessage("{{ message }}");
+    {% endif %}
+</script>
+
+    <script>
+      var bookNumberInput = document.getElementById('booknumber');
+      var noResultsToast = new bootstrap.Toast(document.getElementById('noResultsToast'));
+
+      document.querySelector('.form-container').addEventListener('submit', function (event) {
+        if (!bookNumberInput.value) {
+          noResultsToast.show();
+          event.preventDefault();
+        }
+      });
+    </script>
+
+    </div>
+
+
+  </main>
+
+  <footer>
+    <!-- Footer content here -->
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+<!-- The rest of your HTML content -->
+
+</body>
+</html>

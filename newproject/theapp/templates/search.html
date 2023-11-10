@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.search-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-top: 10px;
+}
+
+input {
+    margin-bottom: 15px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#search-results {
+    margin-top: 20px;
+}
+
+</style>
+<script>
+
+function searchBreweries() {
+    const city = document.getElementById('city').value;
+    const name = document.getElementById('name').value;
+    const type = document.getElementById('type').value;
+
+    // Make API call using fetch or XMLHttpRequest and update UI with results
+
+    // For simplicity, let's assume you have a function displayResults(result) to show results in the #search-results div.
+    if(city&&name&&type){
+
+
+    const results = [
+
+        { name: 'Hop Haven', address: '567 IPA Lane', phone: '555-5678', website: 'http://www.hophavenbrewery.com', rating: 3.5, state: 'CA', city: 'Los Angeles' },
+        { name: 'Crafty Crusade Brewery', address: '789 Craft Street', phone: '555-7890', website: 'http://www.craftycrusade.com', rating: 4.2, state: 'NY', city: 'New York' },
+        { name: 'Malty Meadows Brewing', address: '101 Stout Avenue', phone: '555-1010', website: 'http://www.maltymeadows.com', rating: 4.8, state: 'TX', city: 'Austin' },
+        { name: 'Golden Grain Aleworks', address: '202 Wheat Blvd', phone: '555-2020', website: 'http://www.goldengrainales.com', rating: 3.9, state: 'CO', city: 'Denver' },
+        { name: 'Citrus Squeeze Brewery', address: '444 Orange Ave', phone: '555-4444', website: 'http://www.citrussqueezebrewery.com', rating: 3.7, state: 'FL', city: 'Orlando' },
+
+{ name: 'Oak Barrel Craftworks', address: '555 Oak Street', phone: '555-5555', website: 'http://www.oakbarrelcraftworks.com', rating: 4.1, state: 'CA', city: 'San Diego' },
+
+{ name: 'Riverfront Red Ales', address: '666 Riverside Drive', phone: '555-6666', website: 'http://www.riverfrontredales.com', rating: 4.0, state: 'NY', city: 'Buffalo' },
+
+{ name: 'Piney Pint Brewing Co.', address: '777 Pine Tree Lane', phone: '555-7777', website: 'http://www.pineypintbrewing.com', rating: 4.3, state: 'WA', city: 'Seattle' },
+
+{ name: 'Hazy Horizon Brews', address: '888 Foggy Avenue', phone: '555-8888', website: 'http://www.hazyhorizonbrews.com', rating: 4.7, state: 'CO', city: 'Boulder' },
+
+{ name: 'Harbor Hop Brewery', address: '909 Nautical Way', phone: '555-9090', website: 'http://www.harborhopbrewery.com', rating: 3.6, state: 'CA', city: 'San Francisco' },
+
+{ name: 'Mountain Majesty Brewing', address: '121 Summit Road', phone: '555-1212', website: 'http://www.mountainmajestybrewing.com', rating: 4.4, state: 'CO', city: 'Aspen' },
+
+{ name: 'Brickhouse Brews', address: '131 Brick Lane', phone: '555-1313', website: 'http://www.brickhousebrews.com', rating: 3.8, state: 'TX', city: 'Dallas' },
+
+{ name: 'Cascade Peaks Pub', address: '141 Cascade Blvd', phone: '555-1414', website: 'http://www.cascadepeakspub.com', rating: 4.6, state: 'OR', city: 'Portland' },
+
+{ name: 'Sour Serenity Brewery', address: '151 Tartness Terrace', phone: '555-1515', website: 'http://www.sourserenitybrewery.com', rating: 4.9, state: 'CA', city: 'Sacramento' },
+
+{ name: 'Harvest Moon Aleworks', address: '161 Harvest Lane', phone: '555-1616', website: 'http://www.harvestmoonaleworks.com', rating: 3.9, state: 'IL', city: 'Chicago' },
+
+{ name: 'Rocky Ridge Brew Co.', address: '171 Cliffside Drive', phone: '555-1717', website: 'http://www.rockyridgebrewco.com', rating: 4.2, state: 'CO', city: 'Colorado Springs' },
+
+{ name: 'Aloha Alehouse', address: '181 Tiki Trail', phone: '555-1818', website: 'http://www.alohaalehouse.com', rating: 4.5, state: 'HI', city: 'Honolulu' },
+
+{ name: 'Maple Leaf Brewing', address: '191 Maple Lane', phone: '555-1919', website: 'http://www.mapleleafbrewing.com', rating: 4.3, state: 'VT', city: 'Burlington' },
+
+{ name: 'Urban Oasis Brewery', address: '202 Cityscape Blvd', phone: '555-2020', website: 'http://www.urbanoasisbrewery.com', rating: 3.7, state: 'NY', city: 'Albany' },
+        { name: 'Sunny Sip Ciders', address: '303 Cider Lane', phone: '555-3030', website: 'http://www.sunnysipciders.com', rating: 4.5, state: 'FL', city: 'Miami' },
+        { name: 'Brewery 2', address: '456 Oak St', phone: '555-5678', website: 'http://brewery2.com', rating: 3.5, state: 'NY', city: 'New York' }
+    ];
+
+    displayResults(results);
+}else{
+    alert('Please fill in all fields before searching.');
+}
+}
+
+function displayResults(results) {
+    const resultsContainer = document.getElementById('search-results');
+    resultsContainer.innerHTML = '';
+
+    results.forEach(brewery => {
+        const breweryCard = document.createElement('div');
+        breweryCard.classList.add('brewery-card');
+        breweryCard.innerHTML = `
+            <h3>${brewery.name}</h3>
+            <p><strong>Address:</strong> ${brewery.address}</p>
+            <p><strong>Phone:</strong> ${brewery.phone}</p>
+            <p><strong>Website:</strong> <a href="${brewery.website}" target="_blank">${brewery.website}</a></p>
+            <p><strong>Rating:</strong> ${brewery.rating}</p>
+            <p><strong>State, City:</strong> ${brewery.state}, ${brewery.city}</p>
+            <button onclick="viewBrewery('${brewery.name}')">View Details</button>
+        `;
+        resultsContainer.appendChild(breweryCard);
+    });
+}
+
+function viewBrewery(breweryName) {
+    // You can navigate to the Brewery Page with additional details and reviews
+    window.location.href = `brewery.html?name=${encodeURIComponent(breweryName)}`;
+}
+</script>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Brewery Review System</title>
+    <script src="app.js"></script>
+</head>
+<body>
+    <div class="search-container">
+        <h1>Brewery Search</h1>
+        <form id="search-form">
+            <label for="city">City:</label>
+            <input type="text" id="city" name="city">
+
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name">
+
+            <label for="type">Type:</label>
+            <input type="text" id="type" name="type">
+
+            <button type="button" onclick="searchBreweries()">Search</button>
+        </form>
+
+        <div id="search-results"></div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

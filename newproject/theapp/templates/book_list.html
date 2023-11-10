@@ -1,0 +1,69 @@
+
+<html>
+<head>
+    <title>Book List</title>
+
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container rtr{
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        h2 {
+            text-align: center;
+        }
+        {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+        }*/
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Book List</h2>
+        <!-- Use Bootstrap table class to style the table -->
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+
+                    <th>ISBN</th>
+                    <th>Book Name</th>
+                    <th>Author Name</th>
+                    <th>Edition</th>
+                    <th>Book Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for book in books %}
+                    <tr>
+
+                         <td>{{ book.bookno }}</td>
+                        <td>{{ book.bookname }}</td>
+                        <td>{{ book.authorname }}
+                        <td>{{ book.edition}}</td>
+                        <td>{{ book.status}}</td>
+
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
